@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
+    <title>Ninja Money</title>
+</head>
+<body>
+    <div class='wrapper'>
+        <p>Your gold: {{session['gold']}}</p>
+        <div class='box'>
+            <div class='farm'>
+                <h6>Farm</h6>
+                <p>(earn 10-20 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm"/>
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class='cave'>
+                <h6>Cave</h6>
+                <p>(earn 5-10 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class='house'>
+                <h6>House</h6>
+                <p>(earn 2-5 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class='casino'>
+                <h6>Casino</h6>
+                <p>(earns/take 0-50 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="casino" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+        </div><!-- end of box-->
+            <div>
+                <p>Activities:</p>
+                <div class='smallBox'>
+                    {% for info in session['activities']%}
+
+                        {{info}}
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+    </div> <!-- end of wrapper -->
+    
+</body>
+</html>
